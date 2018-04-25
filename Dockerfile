@@ -1,11 +1,9 @@
 # Build Geth in a stock Go builder container
 FROM golang:1.10-alpine as builder
 
-ARG TAG=v1.8.6
-
 RUN apk add --no-cache git make gcc musl-dev linux-headers
 
-RUN git clone --depth 1 --branch $TAG https://github.com/ethereum/go-ethereum.git /go-ethereum
+RUN git clone --depth 1 --branch v1.8.6 https://github.com/ethereum/go-ethereum.git /go-ethereum
 
 RUN cd /go-ethereum && make all
 
